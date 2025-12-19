@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'" />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'" />
+    <title>report-client</title>
+    <style>
+      .printer-panel {
+        margin-top: 24px;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+
+        h2 {
+          margin: 0 0 12px;
+          font-size: 16px;
+        }
+
+        .printer-row,
+        .file-row,
+        .action-row {
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px;
+
+          label {
+            width: 80px;
+            margin-right: 8px;
+          }
+
+          select,
+          input[type="text"] {
+            flex: 1;
+            padding: 4px 8px;
+          }
+
+          ul {
+            flex: 1;
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+
+            li {
+              font-size: 12px;
+              line-height: 1.6;
+              word-break: break-all;
+            }
+          }
+
+          button {
+            margin-left: 8px;
+            padding: 4px 12px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #f0f0f0;
+            }
+          }
+        }
+		.printer-row{
+			margin-bottom: 20px;
+		}
+
+        .status {
+          margin-top: 8px;
+          color: #666;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p id="info"></p>
+    <div class="printer-panel">
+      <h2>打印设置</h2>
+      <div class="printer-row">
+        <div class="status" id="printStatus"></div>
+        <label for="printerSelect">打印机：</label>
+        <select id="printerSelect"></select>
+        <button id="btnLoadPrinters">刷新列表</button>
+      </div>
+      <div class="file-row">
+        <label>选择文件：</label>
+        <button id="btnSelectFiles">选择文件</button>
+      </div>
+      <div class="file-row">
+        <label>待打印列表：</label>
+        <ul id="pendingFileList"></ul>
+      </div>
+      <div class="action-row">
+        <label></label>
+        <button id="btnClearAll">全部清空</button>
+        <button id="btnPrint">打印</button>
+      </div>
+    </div>
+  </body>
+  <script src="./renderer.js"></script>
+</html>
